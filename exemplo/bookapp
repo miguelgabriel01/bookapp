@@ -1,0 +1,36 @@
+DROP DATABASE IF EXISTS bookapp;
+CREATE DATABASE bookapp;
+
+USE bookapp;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    number VARCHAR(11) NOT NULL,
+    created DATETIME,
+    modified DATETIME
+);
+
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50),
+    description TEXT,
+    genre VARCHAR(50),
+    created DATETIME,
+    modified DATETIME
+);
+
+CREATE TABLE lend (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    FOREIGN KEY user_key (user_id) REFERENCES users(id),
+    FOREIGN KEY book_key(book_id) REFERENCES books(id),
+    Note TEXT,
+    created DATETIME,
+    modified DATETIME
+);
+
+
